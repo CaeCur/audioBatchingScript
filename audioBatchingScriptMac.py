@@ -28,13 +28,13 @@ for entry in obj:
         totalLength = totalLength + length
         print ("running total is " + str(totalLength) + " seconds")
         if totalLength <= 3600 and length < 600 :
-            shutil.copy(mainDirectory + str(entry.name), str(newDirectory + entry.name))
+            shutil.copy(filesSourceDirectory + str(entry.name), str(newDirectory + entry.name))
             print(entry.name + " has been moved: " + str(totalLength) + " seconds have been used")
         else:
             i = i+1
-            newDirectory = mainDirectory + str(i) + "/"
+            newDirectory = filesSourceDirectory + str(i) + "/"
             os.mkdir(newDirectory)
-            shutil.copy(mainDirectory + str(entry.name), str(newDirectory + entry.name))
+            shutil.copy(filesSourceDirectory- + str(entry.name), str(newDirectory + entry.name))
             print(newDirectory + " has been created")
             totalLength = 0
             print("Running total is reset: " + str(totalLength))
