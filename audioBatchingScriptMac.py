@@ -17,7 +17,7 @@ totalLength = 0
 i = 1
 newDirectory = resultDirectory + str(i) + "/"
 
-os.rmdir(newDirectory)
+#os.rmdir(newDirectory)
 os.makedirs(newDirectory)
 
 for entry in obj:
