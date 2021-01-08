@@ -1,7 +1,9 @@
 import os, shutil
 from mutagen.wave import WAVE
-mainDirectory = r"/home/ubuntu/fileBatchTest/test/"
-os.chdir(mainDirectory)
+cwd = os.getcwd()
+filesSourceDirectory = cwd + "/test-files/"
+resultDirectory = cwd + "/results/"
+os.chdir(filesSourceDirectory)
 obj = os.scandir()
 
 # def convert(seconds):
@@ -13,9 +15,10 @@ obj = os.scandir()
 
 totalLength = 0
 i = 1
-newDirectory = mainDirectory + str(i) + "/"
+newDirectory = resultDirectory + str(i) + "/"
 
-os.mkdir(newDirectory)
+os.rmdir(newDirectory)
+os.makedirs(newDirectory)
 
 for entry in obj:
     if entry.is_file():
@@ -25,13 +28,13 @@ for entry in obj:
         totalLength = totalLength + length
         print ("running total is " + str(totalLength) + " seconds")
         if totalLength <= 3600 and length < 600 :
-            shutil.move(mainDirectory + str(entry.name), str(newDirectory + entry.name))
+            shutil.copy(mainDirectory + str(entry.name), str(newDirectory + entry.name))
             print(entry.name + " has been moved: " + str(totalLength) + " seconds have been used")
         else:
             i = i+1
             newDirectory = mainDirectory + str(i) + "/"
             os.mkdir(newDirectory)
-            shutil.move(mainDirectory + str(entry.name), str(newDirectory + entry.name))
+            shutil.copy(mainDirectory + str(entry.name), str(newDirectory + entry.name))
             print(newDirectory + " has been created")
             totalLength = 0
             print("Running total is reset: " + str(totalLength))
