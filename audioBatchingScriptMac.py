@@ -34,7 +34,7 @@ for entry in obj:
             i = i+1
             newDirectory = filesSourceDirectory + str(i) + "/"
             os.mkdir(newDirectory)
-            shutil.copy(filesSourceDirectory- + str(entry.name), str(newDirectory + entry.name))
+            shutil.copy(filesSourceDirectory + str(entry.name), str(newDirectory + entry.name))
             print(newDirectory + " has been created")
             totalLength = 0
             print("Running total is reset: " + str(totalLength))
